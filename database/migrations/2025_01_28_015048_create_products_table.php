@@ -19,6 +19,7 @@ return new class extends Migration
             $table->float('whole_sale_price');
             $table->float('retail_price');
             $table->timestamps();
+            $table->foreign('category_id')->references('id')->on('categories');
         });
     }
 
