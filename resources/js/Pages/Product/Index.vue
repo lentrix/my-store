@@ -19,7 +19,6 @@ defineProps({
     }
 });
 
-
 </script>
 
 <template>
@@ -30,9 +29,12 @@ defineProps({
             <div class="sidebar">
                 <h2>Categories</h2>
                 <ul>
-                    <li v-for="category in categories" :key="category.id" class="sidebar-link">
-                        <Link :href="'/products/' + category.id">
-                            {{ category.name }}
+                    <li class="sidebar-link" :class="category==null?'active':''">
+                        <Link href="/products">All</Link>
+                    </li>
+                    <li v-for="cat in categories" :key="cat.id" class="sidebar-link" :class="cat.id==category?.id ? 'active': ''">
+                        <Link :href="'/products/' + cat.id">
+                            {{ cat.name }}
                         </Link>
                     </li>
                 </ul>
@@ -77,10 +79,15 @@ defineProps({
 .sidebar-link {
     padding-block: 8px;
     border-bottom: 1px solid #888;
+
 }
 
 .sidebar-link:hover {
     background-color: #dfdfdf;
+}
+
+li.active {
+    background-color: rgb(162, 229, 225);
 }
 
 </style>
